@@ -1,0 +1,100 @@
+{
+  "name": "vue-buttons-viewer",
+  "displayName": "Vue Buttons Viewer",
+  "description": "View and manage buttons in Vue files with permissions support",
+  "version": "0.0.1",
+  "publisher": "conjee",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "vue",
+    "button",
+    "element-ui",
+    "permissions",
+    "viewer"
+  ],
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#42b883",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:vue",
+    "onView:buttonTreeView",
+    "onCommand:btns-show-vscode.refreshButtons",
+    "onCommand:btns-show-vscode.showButtons"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "btns-show-vscode.showButtons",
+        "title": "Show Buttons Panel"
+      },
+      {
+        "command": "btns-show-vscode.refreshButtons",
+        "title": "Refresh Buttons List",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vue-buttons",
+          "title": "Vue Buttons",
+          "icon": "$(list-tree)"
+        }
+      ]
+    },
+    "views": {
+      "vue-buttons": [
+        {
+          "id": "buttonTreeView",
+          "name": "Buttons List",
+          "type": "tree",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "btns-show-vscode.refreshButtons",
+          "when": "view == buttonTreeView",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0",
+    "@vue/compiler-sfc": "^3.4.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^8.50.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conjeeohh/vue-buttons-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/conjeeohh/vue-buttons-viewer/issues"
+  },
+  "license": "MIT"
+}
