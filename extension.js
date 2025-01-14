@@ -157,12 +157,19 @@ function activate(context) {
     console.log('Activating extension');
     const buttonTreeProvider = new ButtonTreeProvider();
     
-    // 注册树视图
+    // 注册树视图（活动栏）
     const treeView = vscode.window.createTreeView('buttonTreeView', {
         treeDataProvider: buttonTreeProvider,
         showCollapseAll: true
     });
     context.subscriptions.push(treeView);
+
+    // 注册树视图（资源管理器）
+    const explorerView = vscode.window.createTreeView('buttonExplorerView', {
+        treeDataProvider: buttonTreeProvider,
+        showCollapseAll: true
+    });
+    context.subscriptions.push(explorerView);
 
     // 注册刷新命令
     let refreshDisposable = vscode.commands.registerCommand('btns-show-vscode.refreshButtons', () => {

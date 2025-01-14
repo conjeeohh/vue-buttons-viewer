@@ -2,7 +2,7 @@
   "name": "vue-buttons-viewer",
   "displayName": "Vue Buttons Viewer",
   "description": "View and manage buttons in Vue files with permissions support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "conjee",
   "engines": {
     "vscode": "^1.80.0"
@@ -60,13 +60,22 @@
           "type": "tree",
           "visibility": "visible"
         }
+      ],
+      "explorer": [
+        {
+          "id": "buttonExplorerView",
+          "name": "Vue Buttons",
+          "type": "tree",
+          "visibility": "visible",
+          "when": "resourceLangId == vue"
+        }
       ]
     },
     "menus": {
       "view/title": [
         {
           "command": "btns-show-vscode.refreshButtons",
-          "when": "view == buttonTreeView",
+          "when": "view == buttonTreeView || view == buttonExplorerView",
           "group": "navigation"
         }
       ]
